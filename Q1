@@ -1,0 +1,11 @@
+def multiple(bound):
+    sum = 0
+    for i in range(3,bound,3):
+        sum+=i
+    for i in range(5,bound,5):
+        sum+=i
+    for i in range(15,bound,15):
+        sum-=i
+    return sum
+
+multiple(1000)
