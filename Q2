@@ -1,0 +1,14 @@
+def evenFib(bound):
+    firstFib = 1
+    secondFib = 2
+    sum = 2
+    temp = firstFib + secondFib
+    while (temp <= bound):
+        if (temp%2 == 0):
+            sum+=temp
+        firstFib = secondFib
+        secondFib = temp
+        temp = firstFib + secondFib
+    return sum
+
+evenFib(4000000)
