@@ -1,4 +1,4 @@
-# Find the sum of the digits in the number 100!
+# Find the sum of the digits in the factorial of a number.
 
 import math
 
