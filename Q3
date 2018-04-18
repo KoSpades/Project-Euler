@@ -1,0 +1,12 @@
+def largestFactor(num):
+    if (num == 1):
+        return 1
+    else:
+        large = 1
+        for i in range(1,num+1):
+            if ((num%i == 0) and (i > large)):
+                large = i
+                break
+        return max(large, largestFactor(num//large))
+
+largestFactor(600851475143)
