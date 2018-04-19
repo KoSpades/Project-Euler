@@ -1,0 +1,25 @@
+# Find the nth prime number.
+
+def isPrime(num):  
+  if (num == 1):    
+    return False  
+  for i in range(2,int(num**0.5)+1):    
+    if (num%i == 0):      
+      return False  
+  return True
+  
+def nthPrime(n):  
+  if (n == 1):    
+    return 2  
+  else:    
+    primeCount = 1    
+    curPrime = 2    
+    i = 1    
+    while (primeCount < n):      
+      i+=2      
+      if (isPrime(i) == True):       
+        primeCount+=1       
+        curPrime = i    
+    return curPrime
+    
+nthPrime(10001)
