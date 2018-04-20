@@ -1,6 +1,6 @@
 # Find the sum of all the primes below bound.
 
-# Note: this algorithm takes 20 seconds. Sieve of Eratosthenes runs much faster.
+# Note: this algorithm takes 13 seconds. Sieve of Eratosthenes runs much faster.
 
 def isPrime(num):      
     if (num == 1):    
@@ -11,8 +11,8 @@ def isPrime(num):
     return True
 
 def primeSum(bound):
-    sum = 0
-    for i in range(2, bound):
+    sum = 2
+    for i in range(3, bound, 2):
         if (isPrime(i) == True):
             sum += i
     return sum
