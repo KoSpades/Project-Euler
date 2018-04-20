@@ -1,0 +1,20 @@
+# Find the sum of all the primes below bound.
+
+# Note: this is not a good algorithm as it takes 20 seconds to run. Better algorithm needs to be found.
+
+def isPrime(num):      
+    if (num == 1):    
+        return False  
+    for i in range(2,int(num**0.5)+1):    
+        if (num%i == 0):      
+            return False  
+    return True
+
+def primeSum(bound):
+    sum = 0
+    for i in range(2, bound):
+        if (isPrime(i) == True):
+            sum += i
+    return sum
+
+primeSum(2000000)
