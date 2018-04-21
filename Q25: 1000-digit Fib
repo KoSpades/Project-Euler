@@ -1,0 +1,37 @@
+# What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
+
+def findFib(digits):
+    count = 1
+    firstFib = 1
+    secondFib = 1
+    while(1):
+        tempFib = firstFib
+        firstFib = secondFib
+        secondFib = tempFib + firstFib
+        count+=1
+        if (firstFib > 10**(digits-1)):
+            return count
+
+findFib(1000)
+
+# Note: An elegant way has been found to quickly find the first Fib number with n digits.
+
+import math
+
+def nthFib(n):
+  ratio = (1+5**0.5)/2
+  return int((ratio**n - (-1)**n/(ratio**n))/(5**0.5))
+ 
+def firstFib(digit):
+  lowerTerm = int((digit-1)*math.log(10, 1.619))
+  curFib = nthFib(lowerTerm)
+  nextFib = nthFib(lowerTerm+1)
+  while(1):
+    if (curFib >= 10**(digit-1)):
+      return(curFib)
+    else:
+      tempFib = curFib
+      curFib = nextFib
+      nextFib = tempFib + curFib
+
+firstFib(3)
