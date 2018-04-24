@@ -1,5 +1,7 @@
 # Find the n adjacent digits in a number that have the greatest product. What is the value of this product?
 
+# The code can be shorter. But the "skip zero" section is included to make the program much cleaner.
+
 def root(num,sublength):
     s = str(num)
     return seqProduct(s,0,len(s)-1,sublength)
