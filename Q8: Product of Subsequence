@@ -1,0 +1,26 @@
+# Find the n adjacent digits in the number that have the greatest product. What is the value of this product?
+
+def root(num,sublength):
+    s = str(num)
+    return seqProduct(s,0,len(s)-1,sublength)
+
+def seqProduct(s,start,end,sublength):
+    if (end-start < sublength-1):
+        return 0
+    elif (end-start == sublength-1):
+        product = 1
+        for i in range(sublength):
+            product*=int(s[start+i])
+        return product
+    else:
+        curMax = 0
+        for i in range(start, end-sublength+2):
+            for k in range(i+sublength-1,i-1,-1):
+                if (int(s[k]) == 0):
+                    return max(curMax, seqProduct(s,k+1,end,sublength))
+            product = 1
+            for j in range(sublength):
+                product*=int(s[i+j])
+            if (product > curMax):
+                curMax = product
+        return curMax
