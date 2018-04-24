@@ -1,4 +1,4 @@
-# Find the n adjacent digits in the number that have the greatest product. What is the value of this product?
+# Find the n adjacent digits in a number that have the greatest product. What is the value of this product?
 
 def root(num,sublength):
     s = str(num)
