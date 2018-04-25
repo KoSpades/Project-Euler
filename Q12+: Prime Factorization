@@ -1,7 +1,7 @@
 # Prime factorization algorithm that returns all prime factors of a number as well as their powers.
 
 def numDivisor(d,num):
-    for i in range(2,num):
+    for i in range(2,int(num**0.5)+1):
         if (num%i == 0):
             if i in d:
                 d[i]+=1
