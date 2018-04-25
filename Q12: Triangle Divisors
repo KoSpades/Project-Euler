@@ -1,5 +1,7 @@
 # What is the minimum triangle number with at least k divisors?
 
+# Prime factorization algorithm is created for this problem.
+
 def numDivisor(d,num):
     for i in range(2,num):
         if (num%i == 0):
