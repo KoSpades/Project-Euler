@@ -1,0 +1,23 @@
+# Prime factorization algorithm that returns all prime factors of a number as well as their powers.
+
+def numDivisor(d,num):
+    for i in range(2,num):
+        if (num%i == 0):
+            if i in d:
+                d[i]+=1
+            else:
+                d[i]=1
+            return numDivisor(d,num//i)
+    if num in d:
+        d[num]+=1
+    else:
+        d[num]=1
+    d[1]=0
+    product=1
+    for elm in d:
+        if (elm!=1):
+            print("%d with power %d"%(elm,d[elm]))
+            
+def factor(num):
+    d = dict()
+    return numDivisor(d,num)
