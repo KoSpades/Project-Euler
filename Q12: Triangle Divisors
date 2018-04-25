@@ -1,0 +1,33 @@
+# What is the minimum triangle number with at least k divisors?
+
+def numDivisor(d,num):
+    for i in range(2,num):
+        if (num%i == 0):
+            if i in d:
+                d[i]+=1
+            else:
+                d[i]=1
+            return numDivisor(d,num//i)
+    if num in d:
+        d[num]+=1
+    else:
+        d[num]=1
+    d[1]=0
+    product=1
+    for elm in d:
+        product*=(d[elm]+1)
+    return product
+
+def root(num):
+    d = dict()
+    return numDivisor(d,num)
+
+def divideTriangle(k):
+    n = 1
+    while (1):
+        triangle = (1+n)*n//2
+        if (root(triangle) >= k):
+            return triangle
+        n+=1
+
+divideTriangle(500)
