@@ -1,0 +1,49 @@
+# In how many ways can 200 pences be made using any number of coins?
+
+# Note: The way I used to solve this question is to create seven functions in total, which is a lazy way to deal with recursion. 
+#       It is therefore not the cleanest solution, and can certainly be improved. However, it does have the benefit that subproblems
+#       can be solved easily.
+
+def two(value):  
+  return value//2+1
+  
+def five(value):  
+  count = 0  
+  for i in range(value//5+1):    
+    count+=two(value-5*i)  
+  return count
+  
+def ten(value):  
+  count = 0  
+  for i in range(value//10+1):    
+    count+=five(value-10*i)  
+  return count
+  
+def twenty(value):  
+  count = 0  
+  for i in range(value//20+1):    
+    count+=ten(value-20*i)  
+  return count
+  
+def fifty(value):  
+  count = 0  
+  for i in range(value//50+1):    
+    count+=twenty(value-50*i)  
+  return count
+  
+def hundred(value):  
+  count = 0  
+  for i in range(value//100+1):    
+    count+=fifty(value-100*i)  
+  return count
+
+def twoHundred(value):  
+  count = 0  
+  for i in range(value//200+1):    
+    count+=hundred(value-200*i)  
+  return count
+
+twoHundred(200)
+
+
+
