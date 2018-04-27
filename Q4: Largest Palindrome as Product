@@ -1,11 +1,11 @@
 # Find the largest palindrome that is the product of two three-digit numbers.
 
 def isPalindrome(num):
-    if ((num//100000 == num%10) 
-    and ((num//10)%10 == (num//10000)%10)
-    and ((num//100)%10 == (num//1000)%10)):
-        return True
-    return False
+    s = str(num)
+    for i in range(len(s)//2+1):
+        if (s[i] != s[len(s)-i-1]):
+            return False
+    return True
 
 def largePalindrome():
     large = 0
