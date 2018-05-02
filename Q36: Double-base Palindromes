@@ -1,0 +1,43 @@
+# Find the sum of all numbers, below bound, which is a palindrome in both base 10 and base 2.
+
+# Note: The solution uses the procedure "isPalindrome" from Q4.
+#       The solution creates procedure binRoot, which returns a list representation of a decimal number in binary.
+
+import math
+
+def isPalindrome(num):
+    s = str(num)
+    for i in range(len(s)//2+1):
+        if (s[i] != s[len(s)-i-1]):
+            return False
+    return True
+
+def binRep(num,b):
+    if (num == 0):
+        return b
+    else:
+        exp = int(math.log(num,2))
+        b[len(b)-exp-1]=1
+        return binRep(num-2**exp,b)
+
+def binRoot(num):
+    exp = int(math.log(num,2))
+    b = [0]*(exp+1)
+    b[0]=1
+    return binRep(num-2**exp,b)
+
+def binPalin(num):
+    b = binRoot(num)
+    for i in range(len(b)):
+        if (b[i] != b[len(b)-i-1]):
+            return False
+    return True
+
+def doubleSum(bound):
+    sum = 0
+    for i in range(1,bound):
+        if (isPalindrome(i) and binPalin(i)):
+            sum+=i
+    return sum
+
+doubleSum(1000000)
