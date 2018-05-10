@@ -1,0 +1,36 @@
+# An n-digit number is pandigital if it makes use of all the digits 1 to n exactly once. 
+# What is the largest n-digit pandigital prime that exists?
+
+def isPrime(num):  
+    if (num == 1):    
+        return False  
+    for i in range(2,int(num**0.5)+1):    
+        if (num%i == 0):      
+            return False  
+    return True
+
+def allPerm(n):
+    if (n == 1):
+        p = ["1"]
+        return p
+    else:
+        prev = allPerm(n-1)
+        new = list()
+        for elm in prev:
+            for i in range(n):
+                s = elm[:i]+str(n)+elm[i:]
+                new.append(s)
+        return new
+
+def cleanList(n):
+    strList = allPerm(n)
+    numList = list()
+    for elm in strList:
+        numList.append(int(elm))
+    numList = [elm for elm in numList if (elm%2 != 0)] 
+    numList.sort(reverse = True) # now we have everything we need, just run the isPrime procedure
+    for elm in numList:
+        if (isPrime(elm) == True):
+            return elm;
+    
+cleanList(7)
